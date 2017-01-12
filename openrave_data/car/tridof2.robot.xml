@@ -1,0 +1,31 @@
+<Robot name="3DOFRobot">
+  <KinBody>
+    <!-- Create the base body, it should never move-->
+    <!-- Note that all translations and rotations are with respect to this base-->
+    <!-- For example, the robot at the identity transformation is equivalent to the identity transformation of the first body.-->
+    <Body name="Base" type="dynamic">
+      <Translation>0.0  0.0  0.0</Translation>
+      <Geom type="cylinder">
+        <rotationaxis>1 0 0 90</rotationaxis>
+        <radius>0.005</radius>
+        <height>0.005</height>
+        <diffuseColor>0.05 0.05 0.05</diffuseColor>
+      </Geom>
+    </Body>
+    
+    <!-- the first movable link-->
+    <Body name="Arm0" type="dynamic">
+      <!-- Offset from is a fast way of specifying that the translation and rotation of this-->
+      <!-- body should be relative to another link-->
+      <offsetfrom>Base</offsetfrom>
+      <!-- Translation relative to Base-->
+      <Translation>0 0 0.005</Translation>
+      <Geom type="box">
+        <Translation>0.001 0 0</Translation>
+        <Extents>0.0001 0.0 0</Extents>
+      </Geom>
+    </Body>
+   
+    
+  </KinBody>	     
+</Robot>

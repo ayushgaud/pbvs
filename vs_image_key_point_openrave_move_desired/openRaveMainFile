@@ -1,0 +1,16 @@
+% open rave connection main file
+
+%{
+
+INPUT: time,cstep,state
+
+OUTPUT: constant acceleration in each direction.
+
+Comments:
+Sending the position to open rave and getting the desired velocity for the 
+next iteration
+
+%}
+
+
+acc(1:3,1) = desired.velocity(1:3)-state(4:6))/cstep;

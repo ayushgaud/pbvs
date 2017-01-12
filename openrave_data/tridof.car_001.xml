@@ -1,0 +1,42 @@
+<Environment>
+  <bkgndcolor>1 1 1</bkgndcolor>
+<camtrans>0 0 0</camtrans>
+<!--camrotationaxis>1 0 0 270</camrotationaxis-->
+ <!--KinBody name="mug1" file="cups/wrl/cup001.wrl">
+    
+     <Translation> -0.61512 2.63987 0.10603</Translation>
+    <RotationAxis> 1 0 0 0</RotationAxis>   	   
+    <RotationAxis> 0 0 1 270</RotationAxis>
+
+  </KinBody-->
+ <!--KinBody name="mug1" file="/home/harit/workspace/objectpose/matlab/openrave/hog_vs/image.wrl"-->
+ <KinBody name="mug1" file="car_001.wrl">    
+     <Translation> -1.6 0.2 2.7 </Translation>
+    <RotationAxis> 1 0 0 90</RotationAxis>   	   
+    <RotationAxis> 0 0 1 0</RotationAxis>
+
+  </KinBody>
+
+  <Robot name="3DOFRobot" file="/home/gourav/Qualcom/openrave_data/tridof2.robot.xml">
+  
+	 <Translation> 0 0 0</Translation>
+	<!--translation>-1.2 2.6 -0.2</translation-->
+        <!--RotationAxis>0 0 0 0</RotationAxis-->
+
+	<AttachedSensor name="camera">
+      		<link>Arm0</link>
+		<translation>0 0 0</translation>
+		<rotationaxis>0 0 1 0</rotationaxis>      		
+		<rotationaxis>0 1 0 0</rotationaxis>
+		
+		<KK>800 800 160 120</KK>
+        	<width>320</width>
+        	<height>240</height>
+        	<framerate>5</framerate>
+      		<sensor file="/home/gourav/Qualcom/openrave_data/camera.sensor.xml">
+      		</sensor>
+	</AttachedSensor>
+
+  </Robot>
+
+</Environment>

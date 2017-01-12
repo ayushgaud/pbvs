@@ -1,0 +1,1 @@
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/aseem/PBVS/caffe/src/caffe/proto:/home/aseem/PBVS/caffe/install/lib:/home/aseem/PBVS/caffe/src/caffe
