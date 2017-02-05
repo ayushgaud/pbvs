@@ -1,5 +1,7 @@
 # PBVS using Deep Neural Networks (Matlab Code)
 
+![pbvs](https://cloud.githubusercontent.com/assets/4923897/22561370/f2375de0-e99d-11e6-9ba4-dab177430268.gif)
+
 Pose based visual servoing of objects
 
 #### Dependencies
