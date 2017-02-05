@@ -1,5 +1,4 @@
-function [  ] = parallel_VS(  )
-  %openrave convention
+%openrave convention
 % +x  camera goes right
 % +y  camera goes down
 % +z  camera goes inside
@@ -42,7 +41,7 @@ if( ~exist('render','var') )
 end
 sensorindex = 0;
 orConnectionParams.ip='10.2.36.149';
-orConnectionParams.port=17645
+orConnectionParams.port=4765;%17645
 
 create_env=1;
 
@@ -98,6 +97,7 @@ kpId=getfeature_PBVS_NEW(imgd, cnn_model);
 
 %lambda   = 0.03;%stepsize - adjust for faster/slower convergence
 lambda=5;
+lambda2 =20;
 lambda_step=1.2;
 iter   = 0;
 Z=200;
@@ -141,8 +141,8 @@ while(1)
     theta=pi*kpI(1)/180
     dtheta=pi*err(1)/180
     %want to move in circle around object in x-z plane. 
-    v(2)=-10*ycurr;
-    v(1)=-lambda*Z*cos(theta)*(dtheta) - 10*xcurr;
+    v(2)=-lambda2*ycurr;
+    v(1)=-lambda*Z*cos(theta)*(dtheta) - lambda2*xcurr;
     v(3)=-lambda*Z*(-sin(theta))*(dtheta);
     v(4)=0;
     v(5)=-lambda*dtheta;
@@ -177,11 +177,11 @@ while(1)
     colormap('gray')
     title('image error');axis([0 640 0 480])
     
-    normeError=norm(err);
-    fprintf('|e|=%f\n',normeError);
+    normeError=norm(v);
+    fprintf('|e|=%f\n',normeError*180/pi);
     fprintf('v:%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,Z=%.4f,|Tc|=%f\n',v(1),v(2),v(3),v(4),v(5),v(6),Z,sum(v.*v));
     
-    if(normeError*180/pi < 5 || iter > 400) break;end
+    if(normeError < 0.3 || iter > 400) break;end
     
     normv_arr(iter)=norm(v);
     subplot(2,2,3),plot(normv_arr);
@@ -224,6 +224,4 @@ while(1)
     %cam.T=cam.T*Tdelta;
     orBodySetTransform(robots{1}.id,Tnew(1:3,:));
     pause(0.5)   
-end
-
 end
